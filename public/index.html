@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quran Roots</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Quranic Roots</h1>
+    <ul id="roots-list"></ul>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $.get('/quran-roots', function(data) {
+        const rootsList = $('#roots-list');
+        data.forEach(root => {
+          rootsList.append(`<li>${root.root} - ${root.translation_english} (${root.translation_urdu})</li>`);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
